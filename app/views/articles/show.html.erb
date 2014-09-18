@@ -1,19 +1,26 @@
-<p>
-  <strong>Title:</strong>
-    <%= @article.title %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @article.title %> - <%= @article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></h3>
+  </div>
+  <div class="panel-body">
+    <%= @article.text %>
+  </div>
+  <p>
+  <div class="container">
+    <ul class="nav nav-pills">
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+      <li><%= link_to 'Back', articles_path,:class => 'btn btn-xs btn-primary' %> </li>
+      <li><%= link_to 'Edit', edit_article_path(@article),:class => 'btn btn-xs btn-primary' %> </li>
+    </ul>
+  </div>
+  </p>
 
+</div>
+<div class="well">
 <h2>Add a comment:</h2>
 <%= render "comments/form" %>
-
-<%= link_to 'Back', articles_path %> |  <%= link_to 'Edit', edit_article_path(@article) %>
-
+</div>
 <h2>Comments</h2>
 <% @article.comments.each do |comment| %>
-    <%= render @article.comments %>
+    <%= render comment %>
 <% end %>

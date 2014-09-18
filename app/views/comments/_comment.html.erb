@@ -1,14 +1,19 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= comment.commenter %> - <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></h3>
+  </div>
+  <% %>
+  <div class="panel-body">
+    <%= comment.body %>
+  </div>
+  <p>
+  <div class="container">
+    <ul class="nav nav-pills">
+      <%= link_to 'Destroy Comment', [comment.article, comment],
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger'  %>
+    </ul>
+  </div>
+  </p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
+</div>

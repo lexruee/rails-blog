@@ -1,2 +1,28 @@
-<h1>Hi, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<div class="jumbotron">
+  <h1>Hi, visitor!</h1>
+  <p>
+    This is yet another blog! It uses bootstrap 3 and  rails 4.
+  </p>
+  <p><%= link_to 'Checkout the blog', { :controller=> 'articles'}, :class => 'btn btn-xs btn-primary' %></a> or write a <%= link_to 'New article', new_article_path, :class => 'btn btn-xs btn-primary' %>.</p>
+</div>
+<div class="page-header">
+  <h1>Latest articles on this blog</h1>
+    <div class="row">
+      <% @articles.each do |article|  %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+          <h3><%= link_to article.title, article_path(article) %> </h3>
+            <i>Created at: <%= article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></i>
+            <p>
+              <%= article.text %>
+            </p>
+            <p>
+              <%= link_to 'Show', article_path(article), :class => 'btn btn-large btn-primary' %>
+            </p>
+            </div>
+         </div>
+      </div>
+      <% end %>
+      </div>
+  </div>
